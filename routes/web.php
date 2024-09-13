@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Companies\CompanyController;
+use App\Http\Controllers\Employees\EmployeeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,8 +17,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
+
+Route::get('/companies', [CompanyController::class, 'index'])->name('companies.all');
+
+
+
+Route::get('/employees', [EmployeeController::class, 'index'])->name('employees.all');
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

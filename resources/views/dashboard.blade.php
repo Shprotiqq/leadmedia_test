@@ -13,5 +13,24 @@
                 </div>
             </div>
         </div>
-    </div>
+{{--        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">--}}
+{{--            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">--}}
+{{--                <h3 class="p-6 text-gray-900">Компании</h3>--}}
+{{--                <hr>--}}
+{{--                <div>--}}
+{{--                    <button>Создать новую компанию</button>--}}
+{{--                    <div>--}}
+{{--                        <h4>Список компаний</h4>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+
+
+{{--        </div>--}}
+{{--        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">--}}
+{{--            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">--}}
+{{--                <h3 class="p-6 text-gray-900">Список сотрудников</h3>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
 </x-app-layout>
