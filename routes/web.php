@@ -20,11 +20,11 @@ Route::get('/', function () {
     return redirect()->route('login');
 });
 
-Route::get('/companies', [CompanyController::class, 'index'])->name('companies.all');
+
+Route::resource('companies', CompanyController::class);
 
 
-
-Route::get('/employees', [EmployeeController::class, 'index'])->name('employees.all');
+Route::resource('employees', EmployeeController::class);
 
 
 
