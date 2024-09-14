@@ -5,7 +5,7 @@ namespace App\Http\Requests\Company;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreFromRequest extends FormRequest
+class StoreFromCreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,9 @@ class StoreFromRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
-            'email' => 'email',
-            'logo_path' => 'image',
-            'url' => 'url'
+            'email' => 'nullable|email|unique:companies',
+            'logo_path' => 'nullable|image',
+            'url' => 'nullable|url'
         ];
     }
 
@@ -35,6 +35,8 @@ class StoreFromRequest extends FormRequest
         return [
             'name.required' => 'Поле "Имя" обязательно для заполнения',
             'email.email' => 'Поле "e-mail" должно включать в себя почту',
+            'email' => 'Компания с таким e-mail уже есть в списке',
+            'logo_path' => 'Вы не прикрепили файл',
             'url.url' => 'Поле "Адрес сайта" должно включать в себя url сайта',
         ];
     }

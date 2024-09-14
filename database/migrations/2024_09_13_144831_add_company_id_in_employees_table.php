@@ -13,7 +13,9 @@ return new class extends Migration {
     {
         Schema::table('employees', function (Blueprint $table) {
             $table->foreignIdFor(Company::class)
+                ->nullable()
                 ->constrained()
+                ->cascadeOnUpdate()
                 ->cascadeOnDelete();
 
         });

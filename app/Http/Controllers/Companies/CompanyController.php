@@ -2,74 +2,115 @@
 
 namespace App\Http\Controllers\Companies;
 
-use App\DTOs\Company\CompanyDTO;
+use App\DTOs\Company\CompanyCreateDTO;
+use App\DTOs\Company\CompanyUpdateDTO;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Company\StoreFromRequest;
+use App\Http\Requests\Company\StoreFromCreateRequest;
+use App\Http\Requests\Company\StoreFromUpdateRequest;
+use App\Models\Company;
 use App\Services\Company\CompanyService;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
-class CompanyController extends Controller
+final class CompanyController extends Controller
 {
+
     /**
-     * Display a listing of the resource.
+     * Возвращает страницу со списком компаний
+     *
+     * @return View|Application|Factory|\Illuminate\Contracts\Foundation\Application
      */
     public function index(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
-        return view('companies/company_list');
+        $companies = Company::query()->orderBy('id', 'DESC')->paginate(10);
+
+        return view('companies/company-list', compact('companies'));
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Форма создания компании
+     *
+     * @return View|Application|Factory|\Illuminate\Contracts\Foundation\Application
      */
     public function create(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
-        return view('companies/company_create');
+        return view('companies/company-create');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Сохраняет запись о новой компании в таблицу БД
+     *
+     * @param StoreFromCreateRequest $request
+     * @return RedirectResponse
      */
-    public function store(StoreFromRequest $request): RedirectResponse
+    public function store(StoreFromCreateRequest $request): RedirectResponse
     {
-        $dto = CompanyDTO::fromRequest($request);
+        $dto = CompanyCreateDTO::fromRequest($request);
 
-        $company = CompanyService::created($dto);
+        $company = CompanyService::create($dto);
 
-        return redirect()->route('companies.index');
+        return redirect()->route('companies.index', compact('company'));
     }
 
+
     /**
-     * Display the specified resource.
+     * Вью просмотра компании
+     *
+     * @param Company $company
+     * @return View|Application|Factory|\Illuminate\Contracts\Foundation\Application
      */
-    public function show(string $id)
+    public function show(Company $company): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
-        //
+        return view('companies/company-show', [
+            'company' => $company
+        ]);
     }
 
+
     /**
-     * Show the form for editing the specified resource.
+     * Форма изменения компании
+     *
+     * @param Company $company
+     * @return View|Application|Factory|\Illuminate\Contracts\Foundation\Application
      */
-    public function edit(string $id)
+    public function edit(Company $company): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
-        //
+        return view('companies/company-edit', [
+            'company' => $company
+        ]);
     }
 
+
     /**
-     * Update the specified resource in storage.
+     * Обновление компании
+     *
+     * @param StoreFromUpdateRequest $request
+     * @param Company $company
+     * @return RedirectResponse
      */
-    public function update(Request $request, string $id)
+    public function update(StoreFromUpdateRequest $request, Company $company): RedirectResponse
     {
-        //
+        $dto = CompanyUpdateDTO::fromRequest($request, $company);
+
+        CompanyService::update($dto);
+
+        session()->flash('success', 'Изменения сохранены!');
+
+        return back();
     }
 
+
     /**
-     * Remove the specified resource from storage.
+     * Удаление компании
+     *
+     * @param Company $company
+     * @return void
      */
-    public function destroy(string $id)
+    public function destroy(Company $company)
     {
         //
     }
