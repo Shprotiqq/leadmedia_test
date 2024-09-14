@@ -46,7 +46,12 @@
                                         <td class="border px-6 py-4 text-right">
                                             <a href="{{ route('companies.show', $company->id) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Show</a>
                                             <a href="{{ route('companies.edit', $company->id) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Delete</a>
+                                            <form action="{{ route('companies.destroy', $company->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+
+                                                <button class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Delete</button>
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach

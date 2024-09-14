@@ -1,6 +1,6 @@
 <?php
 
-namespace app\Services\Company;
+namespace App\Services\Company;
 
 use App\DTOs\Company\CompanyCreateDTO;
 use App\DTOs\Company\CompanyUpdateDTO;

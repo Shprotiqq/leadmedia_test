@@ -28,7 +28,7 @@ final class CompanyController extends Controller
     {
         $companies = Company::query()->orderBy('id', 'DESC')->paginate(10);
 
-        return view('companies/company-list', compact('companies'));
+        return view('companies/company_list', compact('companies'));
     }
 
     /**
@@ -38,11 +38,11 @@ final class CompanyController extends Controller
      */
     public function create(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
-        return view('companies/company-create');
+        return view('companies/company_create');
     }
 
     /**
-     * Сохраняет запись о новой компании в таблицу БД
+     * Создание компании
      *
      * @param StoreFromCreateRequest $request
      * @return RedirectResponse
@@ -58,14 +58,14 @@ final class CompanyController extends Controller
 
 
     /**
-     * Вью просмотра компании
+     * Страница просмотра компании
      *
      * @param Company $company
      * @return View|Application|Factory|\Illuminate\Contracts\Foundation\Application
      */
     public function show(Company $company): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
-        return view('companies/company-show', [
+        return view('companies/company_show', [
             'company' => $company
         ]);
     }
@@ -79,7 +79,7 @@ final class CompanyController extends Controller
      */
     public function edit(Company $company): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
-        return view('companies/company-edit', [
+        return view('companies/company_edit', [
             'company' => $company
         ]);
     }
@@ -112,6 +112,8 @@ final class CompanyController extends Controller
      */
     public function destroy(Company $company)
     {
-        //
+        Company::query()->findOrFail($company->id)->delete();
+
+        return back();
     }
 }

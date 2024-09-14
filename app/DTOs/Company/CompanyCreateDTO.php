@@ -20,8 +20,6 @@ final class CompanyCreateDTO
     {
         $requestData = $request->validated();
 
-
-
         return new self(
           $requestData['name'],
           $requestData['email'],
