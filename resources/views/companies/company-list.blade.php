@@ -32,8 +32,26 @@
                             </tr>
                             </thead>
                             <tbody>
-
+                                @foreach($companies as $company)
+                                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                                        <td class="border px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white text-center">
+                                            {{ $company->name }}
+                                        </td>
+                                        <td class="border px-6 py-4 font-medium text-gray-900 text-center">
+                                            {{ $company->email }}
+                                        </td>
+                                        <td class="border px-6 py-4 font-medium text-gray-900">
+                                            <a href="{{ $company->url }}">{{ $company->url }}</a>
+                                        </td>
+                                        <td class="border px-6 py-4 text-right">
+                                            <a href="{{ route('companies.show', $company->id) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Show</a>
+                                            <a href="{{ route('companies.edit', $company->id) }}" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Delete</a>
+                                        </td>
+                                    </tr>
+                                @endforeach
                             </tbody>
+                            {{ $companies->links() }}
                         </table>
                     </div>
                 </div>
