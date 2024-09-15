@@ -100,7 +100,7 @@ final class CompanyController extends Controller
 
         session()->flash('success', 'Изменения сохранены!');
 
-        return back();
+        return redirect()->route('companies.index');
     }
 
 
@@ -108,9 +108,9 @@ final class CompanyController extends Controller
      * Удаление компании
      *
      * @param Company $company
-     * @return void
+     * @return RedirectResponse
      */
-    public function destroy(Company $company)
+    public function destroy(Company $company): RedirectResponse
     {
         Company::query()->findOrFail($company->id)->delete();
 

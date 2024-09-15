@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Storage;
 
 class CompanyService
 {
+
+    //TODO Сделать проверку logo_path на null
     public static function create(CompanyCreateDTO $dto): Model|Builder
     {
         $dto->logo_path->store();
