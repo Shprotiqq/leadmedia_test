@@ -12,18 +12,25 @@ use Illuminate\Support\Facades\Storage;
 
 class CompanyService
 {
-
-    //TODO Сделать проверку logo_path на null
     public static function create(CompanyCreateDTO $dto): Model|Builder
     {
-        $dto->logo_path->store();
+        if(isset($dto->logo_path)) {
+            $dto->logo_path->store();
 
-        return Company::query()->create([
-           'name' => $dto->name,
-           'email' => $dto->email,
-           'logo_path' => $dto->logo_path->hashName(),
-           'url' => $dto->url
-        ]);
+            return Company::query()->create([
+                'name' => $dto->name,
+                'email' => $dto->email,
+                'logo_path' => $dto->logo_path->hashName(),
+                'url' => $dto->url
+            ]);
+        } else {
+            return Company::query()->create([
+                'name' => $dto->name,
+                'email' => $dto->email,
+                'logo_path' => $dto->logo_path,
+                'url' => $dto->url
+            ]);
+        }
     }
 
     public static function update(CompanyUpdateDTO $dto): int
