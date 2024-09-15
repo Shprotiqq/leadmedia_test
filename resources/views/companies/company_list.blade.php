@@ -78,7 +78,7 @@
                             </tbody>
                             {{ $companies->links() }}
                         </table>
-                    </divbox-border>
+                    </div>
                 </div>
             </div>
         </div>

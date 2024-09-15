@@ -19,7 +19,7 @@
                     </label>
                     <label for="email" class="block text-lg font-medium text-slate-700 pt-7">
                         {{ __('Email компании') }}
-                        <input type="text" class="mt-1 block w-60 px-3 py-2 bg-white border border-slate-300
+                        <input type="email" class="mt-1 block w-60 px-3 py-2 bg-white border border-slate-300
                      rounded-md text-sm shadow-sm placeholder-slate-400
                      focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500" name="email">
                     </label>
@@ -31,7 +31,7 @@
                     </label>
                     <label for="url" class="block text-lg font-medium text-slate-700 pt-7">
                         {{ __('Адрес сайта компании') }}
-                        <input type="text" class="mt-1 block w-60 px-3 py-2 bg-white border border-slate-300
+                        <input type="url" class="mt-1 block w-60 px-3 py-2 bg-white border border-slate-300
                      rounded-md text-sm shadow-sm placeholder-slate-400
                      focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500" name="url">
                     </label>

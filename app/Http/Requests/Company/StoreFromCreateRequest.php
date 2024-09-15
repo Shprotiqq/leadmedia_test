@@ -35,8 +35,8 @@ class StoreFromCreateRequest extends FormRequest
         return [
             'name.required' => 'Поле "Имя" обязательно для заполнения',
             'email.email' => 'Поле "e-mail" должно включать в себя почту',
-            'email' => 'Компания с таким e-mail уже есть в списке',
-            'logo_path' => 'Вы не прикрепили файл',
+            'email.unique' => 'Компания с таким e-mail уже есть в списке',
+            'logo_path.image' => 'Недопустимый тип файла',
             'url.url' => 'Поле "Адрес сайта" должно включать в себя url сайта',
         ];
     }
