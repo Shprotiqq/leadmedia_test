@@ -41,7 +41,9 @@
                                         {{ $employee->fullName }}
                                     </th>
                                     <td class="border px-4 py-2 font-medium text-gray-900 whitespace-normal text-center">
-                                        {{--                                        {{ $employee->company_id === $companies->id }}--}}
+                                        @if(isset($employee->company))
+                                            {{ $employee->company->name }}
+                                        @endif
                                     </td>
                                     <td class="border px-1 py-1 font-light text-gray-900 whitespace-normal text-center">
                                         {{ $employee->email }}

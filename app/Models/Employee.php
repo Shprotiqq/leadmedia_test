@@ -7,14 +7,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Employee extends Model
+final class Employee extends Model
 {
     use HasFactory;
 
     protected $fillable = [
         'first_name',
         'last_name',
-        'company',
         'email',
         'phone_number',
         'company_id'
@@ -22,7 +21,7 @@ class Employee extends Model
 
     public function company(): BelongsTo
     {
-        return $this->belongsTo(Company::class);
+        return $this->belongsTo(Company::class, 'company_id', 'id');
     }
 
     public function fullName(): Attribute

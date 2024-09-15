@@ -37,9 +37,15 @@
                     </label>
                     <label for="url" class="block text-lg font-medium text-slate-700 pt-7">
                         {{ __('Компания') }}
-                        <input type="text" class="mt-1 block w-60 px-3 py-2 bg-white border border-slate-300
-                     rounded-md text-sm shadow-sm placeholder-slate-400
-                     focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500" name="url">
+                        <select name="company_id" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm
+                        rounded-lg focus:ring-sky-500 focus:border-sky-500 block w-full p-2.5 dark:bg-gray-700
+                        dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-sky-500
+                        dark:focus:border-sky-500">
+                            <option selected disabled></option>
+                            @foreach($companies as $company)
+                                <option value="{{ $company->id }}">{{ $company->name }}</option>
+                            @endforeach
+                        </select>
                     </label>
                     <button type="submit" class="font-semibold bg-green-500 text-white w-60 h-10 rounded-lg
                     hover:bg-green-700 duration-200 shadow-lg transform active:scale-75 transition-all my-6 ">

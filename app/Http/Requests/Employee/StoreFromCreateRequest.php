@@ -5,14 +5,14 @@ namespace App\Http\Requests\Employee;
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreFromCreateRequest extends FormRequest
+final class StoreFromCreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return true;
+        return auth()->check();
     }
 
     /**
@@ -27,7 +27,7 @@ class StoreFromCreateRequest extends FormRequest
             'last_name' => 'required|string',
             'email' => 'nullable|email|unique:employees',
             'phone_number' => 'nullable|numeric|unique:employees',
-            'company' => 'nullable'
+            'company_id' => 'nullable|exists:companies,id'
         ];
     }
 

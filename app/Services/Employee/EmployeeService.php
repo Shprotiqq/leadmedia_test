@@ -8,7 +8,7 @@ use App\Models\Employee;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 
-class EmployeeService
+final class EmployeeService
 {
 
     public static function create(EmployeeCreateDTO $dto): Model|Builder
@@ -22,14 +22,14 @@ class EmployeeService
         ]);
     }
 
-    public static function update(EmployeeUpdateDTO $dto)
+    public static function update(EmployeeUpdateDTO $dto): void
     {
         $dto->employee->update([
-           'first_name' => $dto->first_name ?? $dto->employee->first_name,
-           'last_name' => $dto->last_name ?? $dto->employee->last_name,
-           'email' => $dto->email ?? $dto->employee->email,
-           'phone_number' => $dto->phone_number ?? $dto->employee->phone_number,
-           'company_id' => $dto->company_id ?? $dto->employee->company_id
+           'first_name' => $dto->first_name,
+           'last_name' => $dto->last_name,
+           'email' => $dto->email,
+           'phone_number' => $dto->phone_number,
+           'company_id' => $dto->company_id
         ]);
     }
 

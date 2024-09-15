@@ -14,9 +14,8 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 
-class EmployeeController extends Controller
+final class EmployeeController extends Controller
 {
 
     /**
@@ -26,11 +25,13 @@ class EmployeeController extends Controller
      */
     public function index(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
-        $employees = Employee::query()->orderBy('id', 'DESC')->paginate(10);
 
-        $companies = Company::query()->select(['id', 'name'])->get();
+        $employees = Employee::query()
+            ->with('company')
+            ->orderBy('id', 'DESC')
+            ->paginate(10);
 
-        return view('employees/employee_list', compact('employees', 'companies'));
+        return view('employees/employee_list', compact('employees'));
     }
 
 
@@ -41,7 +42,9 @@ class EmployeeController extends Controller
      */
     public function create(): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
     {
-        return view('employees/employee_create');
+        $companies = Company::all();
+
+        return view('employees/employee_create', compact('companies'));
     }
 
 
@@ -82,10 +85,13 @@ class EmployeeController extends Controller
      * @param Employee $employee
      * @return View|Application|Factory|\Illuminate\Contracts\Foundation\Application
      */
-    public function edit(Employee $employee): View|Application|Factory|\Illuminate\Contracts\Foundation\Application
+    public function edit(Employee $employee): Application|Factory|View|\Illuminate\Contracts\Foundation\Application
     {
+        $companies = Company::all();
+
         return view('employees/employee_edit', [
-            'employee' => $employee
+            'employee' => $employee,
+            'companies' => $companies
         ]);
     }
 

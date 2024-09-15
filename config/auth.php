@@ -40,6 +40,11 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
+        'internal_api' => [
+            'drive' => 'token',
+            'provider' => 'internal_api_users'
+        ]
     ],
 
     /*
@@ -65,6 +70,10 @@ return [
             'model' => App\Models\User::class,
         ],
 
+        'internal_api_users' => [
+            'driver' => 'database',
+            'table' => 'internal_api_users'
+        ]
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Employee;
+namespace App\Http\Requests\InternalApiUsers;
 
 use Illuminate\Contracts\Validation\ValidationRule;
 use Illuminate\Foundation\Http\FormRequest;
@@ -12,7 +12,7 @@ final class StoreFromUpdateRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return auth()->check();
+        return true;
     }
 
     /**
@@ -28,16 +28,6 @@ final class StoreFromUpdateRequest extends FormRequest
             'email' => 'nullable|email',
             'phone_number' => 'nullable|numeric',
             'company_id' => 'nullable|int|exists:companies,id'
-        ];
-    }
-
-    public function messages(): array
-    {
-        return [
-            'first_name.string' => 'Поле "Имя" должно состоять из букв',
-            'last_name.string' => 'Поле "Фамилия" должно состоять из букв',
-            'email.email' => 'Поле "e-mail" должно включать в себя почту',
-            'phone_number' => 'Поле "номер телефона" должно стоять из цифр'
         ];
     }
 }

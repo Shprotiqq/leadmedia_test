@@ -12,7 +12,7 @@ class EmployeeCreateDTO
         public readonly string $last_name,
         public readonly ?string $email,
         public readonly ?string $phone_number,
-        public readonly ?string $company_id
+        public readonly ?int $company_id
     )
     {
     }

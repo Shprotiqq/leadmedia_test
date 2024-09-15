@@ -7,10 +7,8 @@ use App\DTOs\Company\CompanyUpdateDTO;
 use App\Models\Company;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Facades\Storage;
 
-class CompanyService
+final class CompanyService
 {
     public static function create(CompanyCreateDTO $dto): Model|Builder
     {
