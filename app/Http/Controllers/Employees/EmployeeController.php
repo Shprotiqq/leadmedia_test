@@ -57,6 +57,8 @@ class EmployeeController extends Controller
 
         $employee = EmployeeService::create($dto);
 
+        session()->flash('success', 'Сотрудник создан!');
+
         return redirect()->route('employees.index', compact('employee'));
     }
 

@@ -21,30 +21,30 @@
                 <div class="border border-inherit rounded-md mx-6 ">
                     <h4 class="font-semibold p-6 text-gray-900">Список компаний</h4>
                     <hr>
-                    <div class="box-content max-w-6xl">
-                        <table class="border-collapse border mx-6 my-6">
+                    <div class="overflow-x-auto w-full">
+                        <table class="w-full border-collapse border">
                             <thead>
                             <tr>
-                                <th scope="col" class="border px-3 py-1">Название</th>
-                                <th scope="col" class="border px-6 py-4">Email</th>
-                                <th scope="col" class="border px-6 py-4">Url</th>
-                                <th scope="col" class="border px-6 py-4"></th>
+                                <th scope="col" class="border px-6 py-3">Название</th>
+                                <th scope="col" class="border px-6 py-3">Email</th>
+                                <th scope="col" class="border px-6 py-3">Url</th>
+                                <th scope="col" class="border px-6 py-3"></th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($companies as $company)
                                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                    <td class="border px-1 py-1 font-medium text-gray-900 whitespace-nowrap
+                                    <td class="border px-1 py-1 font-medium text-gray-900 whitespace-normal
                                      dark:text-white text-center">
                                         {{ $company->name }}
                                     </td>
-                                    <td class="border px-4 py-2 font-medium text-gray-900 text-center">
+                                    <td class="border px-4 py-2 font-medium text-gray-900 text-center whitespace-normal">
                                         {{ $company->email }}
                                     </td>
-                                    <td class="border px-6 py-4 font-light text-gray-900 text-wrap">
+                                    <td class="border px-6 py-4 font-light text-gray-900 whitespace-normal">
                                         <a href="{{ $company->url }}">{{ $company->url }}</a>
                                     </td>
-                                    <td class="border px-6 py-4 text-right">
+                                    <td class="border px-6 py-4 text-right whitespace-normal flex flex-col w-auto">
                                         <a href="{{ route('companies.show', $company->id) }}">
                                             <button class="font-semibold bg-green-500 text-white w-40 h-10 rounded-lg
                                             hover:bg-green-700 duration-200 shadow-lg transform active:scale-75

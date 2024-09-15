@@ -16,7 +16,8 @@ class Employee extends Model
         'last_name',
         'company',
         'email',
-        'phone_number'
+        'phone_number',
+        'company_id'
     ];
 
     public function company(): BelongsTo

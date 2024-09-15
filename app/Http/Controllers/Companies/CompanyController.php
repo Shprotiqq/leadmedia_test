@@ -53,6 +53,8 @@ final class CompanyController extends Controller
 
         $company = CompanyService::create($dto);
 
+        session()->flash('success', 'Компания создана!');
+
         return redirect()->route('companies.index', compact('company'));
     }
 

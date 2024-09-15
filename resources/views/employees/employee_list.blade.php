@@ -21,8 +21,8 @@
                 <div class="border border-inherit rounded-md mx-6 ">
                     <h4 class="font-semibold p-6 text-gray-900">Список сотрудников</h4>
                     <hr>
-                    <div class="box-content max-w-6xl">
-                        <table class="border-collapse border mx-6 my-6 overflow-x-hidden">
+                    <div class="w-full overflow-x-auto">
+                        <table class="border-collapse border w-full">
                             <thead>
                             <tr>
                                 <th scope="col" class="border px-3 py-1">Имя</th>
@@ -36,20 +36,21 @@
 
                             @foreach($employees as $employee)
                                 <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 w-52">
-                                    <th scope="row" class="border px-1 py-1 font-medium text-gray-900 whitespace-nowrap
+                                    <th scope="row" class="border px-1 py-1 font-medium text-gray-900 whitespace-normal
                                      dark:text-white text-center">
                                         {{ $employee->fullName }}
                                     </th>
-                                    <td class="border px-4 py-2 font-medium text-gray-900 text-center">
-{{--                                        {{ $employee->company_id === $companies->id }}--}}
+                                    <td class="border px-4 py-2 font-medium text-gray-900 whitespace-normal text-center">
+                                        {{--                                        {{ $employee->company_id === $companies->id }}--}}
                                     </td>
-                                    <td class="border px-1 py-1 font-light text-gray-900 text-wrap">
+                                    <td class="border px-1 py-1 font-light text-gray-900 whitespace-normal text-center">
                                         {{ $employee->email }}
                                     </td>
-                                    <td class="border px-1 py-1 font-light text-gray-900 text-wrap">
+                                    <td class="border px-1 py-1 font-light text-gray-900 whitespace-normal text-center">
                                         {{ $employee->phone_number }}
                                     </td>
-                                    <td class="border px-4 py-4 text-right flex flex-col w-auto">
+                                    <td class="border px-4 py-4 text-right flex flex-col w-auto whitespace-normal
+                                    items-center">
                                         <a href="{{ route('employees.show', $employee->id) }}">
                                             <button class="font-semibold bg-green-500 text-white w-40 h-10 rounded-lg
                                             hover:bg-green-700 duration-200 shadow-lg transform active:scale-75
@@ -83,9 +84,9 @@
                             </tbody>
                             {{ $employees->links() }}
                         </table>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 </x-app-layout>

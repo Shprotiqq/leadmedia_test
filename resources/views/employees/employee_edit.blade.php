@@ -32,9 +32,9 @@
                     </label>
                     <label for="phone_number" class="block text-lg font-medium text-slate-700 pt-7">
                         {{ __('Номер телефона сотрудника') }}
-                        <input type="tel" class="block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4
-                    file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-green-500
-                    file:text-white hover:file:bg-green-700 pt-5" name="phone_number" value="{{ $employee->phone_number }}">
+                        <input type="tel" class="mt-1 block w-60 px-3 py-2 bg-white border border-slate-300
+                     rounded-md text-sm shadow-sm placeholder-slate-400
+                     focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500" name="phone_number" value="{{ $employee->phone_number }}">
                     </label>
                     <label for="company_id" class="block text-lg font-medium text-slate-700 pt-7">
                         {{ __('Компания') }}
@@ -51,5 +51,4 @@
         </div>
     </form>
 </x-app-layout>
-<?php
-<?php
+
