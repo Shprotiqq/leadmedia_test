@@ -15,7 +15,7 @@
                 <a href="{{ route('companies.create') }}">
                     <button class="font-semibold bg-green-500 text-white w-60 h-10 rounded-lg hover:bg-green-700
                     duration-200 shadow-lg transform active:scale-75 transition-all my-6 mx-5">
-                        {{ __('Добавить новую компанию') }}
+                        {{ __('Добавить компанию') }}
                     </button>
                 </a>
                 <div class="border border-inherit rounded-md mx-6 ">
